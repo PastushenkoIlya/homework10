@@ -12,11 +12,12 @@ public class Task3 {
         String[] strArr = {"1, 2, 0", "4, 5"};
         List<Integer> numbers = new ArrayList<>();
 
-        for(String str : strArr){
-            numbers.addAll(Arrays.stream(str.split(", ")).mapToInt(Integer::parseInt).boxed().collect(Collectors.toList()));
-        }
-        System.out.println(numbers.stream().sorted().map(String::valueOf).collect(Collectors.joining(", ")));
-
+//        for(String str : strArr){
+//            numbers.addAll(Arrays.stream(str.split(", ")).mapToInt(Integer::parseInt).boxed().collect(Collectors.toList()));
+//        }
+//        System.out.println(numbers.stream().sorted().map(String::valueOf).collect(Collectors.joining(", ")));
+        String res = Arrays.stream(strArr).mapToInt(num -> Integer.parseInt(num)).boxed().map(num -> String.valueOf(num)).collect(Collectors.joining(", "));
+        
     }
 
 }
