@@ -16,8 +16,11 @@ public class Task3 {
 //            numbers.addAll(Arrays.stream(str.split(", ")).mapToInt(Integer::parseInt).boxed().collect(Collectors.toList()));
 //        }
 //        System.out.println(numbers.stream().sorted().map(String::valueOf).collect(Collectors.joining(", ")));
-        String res = Arrays.stream(strArr).mapToInt(num -> Integer.parseInt(num)).boxed().map(num -> String.valueOf(num)).collect(Collectors.joining(", "));
-        
+        String res = Arrays.stream(strArr)
+                .flatMapToInt(str -> Arrays.stream(str.split(", ")).sorted().mapToInt(num -> Integer.parseInt(num)))
+                .boxed().map(num -> String.valueOf(num)).collect(Collectors.joining(", "));
+        System.out.println(res);
+
     }
 
 }
